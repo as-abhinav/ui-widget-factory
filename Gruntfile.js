@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     // See: http://www.jshint.com/docs/
     jshint: {
       all: {
-        src: 'src/javascripts/*/**.js',
+        src: 'src/javascripts/**.js',
         options: {
           bitwise: true,
           camelcase: true,
@@ -13,7 +13,7 @@ module.exports = function (grunt) {
           eqeqeq: true,
           forin: true,
           immed: true,
-          indent: 4,
+          indent: 2,
           latedef: true,
           newcap: true,
           noarg: true,
@@ -37,21 +37,6 @@ module.exports = function (grunt) {
       }
     },
 
-    jade: {
-      options: {
-        pretty: true
-      },
-      all:{
-        // For later review
-        files: [ {
-          cwd: "src/views",
-          src: "layout/*.jade",
-          dest: "public",
-          expand: true,
-          ext: ".html"
-        } ]
-      }
-    },
     
     sass: {
       options: {
@@ -80,10 +65,10 @@ module.exports = function (grunt) {
       sass: {
         files: 'src/sass/**.scss',
         tasks: ['sass']
-      },
-      jade:{
-        files: 'src/views/*/**.jade',
-        tasks: ['jade']
+      // },
+      // jade:{
+      //   files: 'src/views/*/**.jade',
+      //   tasks: ['jade']
       }
     }
 
@@ -93,9 +78,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-jade');
+  // grunt.loadNpmTasks('grunt-contrib-jade');
 
-  grunt.registerTask('default', ['sass', 'jshint', 'uglify', 'jade']);
+  grunt.registerTask('default', ['sass', 'jshint', 'uglify']);
 
-  grunt.registerTask('watcher', ['sass', 'jshint', 'uglify', 'jade', 'watch']);
+  grunt.registerTask('watcher', ['sass', 'jshint', 'uglify', 'watch']);
 };
