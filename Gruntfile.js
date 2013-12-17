@@ -92,5 +92,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-jade');
 
-  grunt.registerTask('default', ['sass', 'jshint', 'uglify', 'jade', 'watch']);
+  grunt.registerTask('watcher', ['sass', 'jshint', 'uglify', 'jade', 'watch']);
+
+  grunt.registerTask('default', ['watcher']);
 };
