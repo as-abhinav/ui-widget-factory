@@ -32,46 +32,40 @@ module.exports = function (grunt) {
     uglify: {
       all: {
         files: {
-          'public/javascripts/all.min.js': 'src/javascripts/*/**.js'
+          'public/javascripts/app.js': 'src/javascripts/**.js'
         }
       }
     },
 
-    // jade: {
-    //   options: {
-    //     pretty: true
-    //   },
-    //   all:{
-    //     files: [ {
-    //       cwd: "src/views",
-    //       src: "**/*.jade",
-    //       dest: "public/html",
-    //       expand: true,
-    //       ext: ".html"
-    //     } ]
-    //   }
-    // },
-
+    jade: {
+      options: {
+        pretty: true
+      },
+      all:{
+        // For later review
+        files: [ {
+          cwd: "src/views",
+          src: "layout/*.jade",
+          dest: "public",
+          expand: true,
+          ext: ".html"
+        } ]
+      }
+    },
+    
     sass: {
       options: {
         style: 'compressed',
         precision: 5
       },
       all: {
-        files: {
-          'public/stylesheets/style.css': 'src/sass/style.scss'
-        }
-      }
-    },
-    
-    jade: {
-      compile: {
-        options: {
-          pretty: true
-        },
-        dir: {
-          'dist': ['src/views']
-        }
+        files: [ {
+          cwd: "src/sass",
+          src: "*.scss",
+          dest: "public/stylesheets",
+          expand: true,
+          ext: ".css"
+        } ]
       }
     },
 
@@ -83,6 +77,10 @@ module.exports = function (grunt) {
       sass: {
         files: 'sass/*/**.scss',
         tasks: 'sass'
+      },
+      jade:{
+        files: 'src/views/*/**.jade',
+        tasks: 'jade'
       }
     }
 
@@ -93,4 +91,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-jade');
+
+  grunt.registerTask('default', ['sass', 'jshint', 'uglify', 'jade']);
 };
