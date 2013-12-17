@@ -1,0 +1,19 @@
+{
+    "name": "ui-widget-factory",
+    "description": "UI Widget Factory, to build, responsive, customized widgets.",
+    "version": "1.0.0",
+    "private": true,
+    "homepage" : "http://www.abhinavs.com",
+    "author" : {
+        "name" : "Abhinav Sharma",
+        "email" : "as.abhinav@gmail.com"
+    },
+    "dependencies": {
+        "grunt" : "latest",
+        "grunt-contrib-sass" : "latest",
+        "grunt-contrib-jshint": "latest",
+        "grunt-contrib-uglify": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-jade": "latest"
+    }
+}
