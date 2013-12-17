@@ -9,11 +9,11 @@
         "email" : "as.abhinav@gmail.com"
     },
     "dependencies": {
-        "grunt" : "latest",
-        "grunt-contrib-sass" : "latest",
-        "grunt-contrib-jshint": "latest",
-        "grunt-contrib-uglify": "latest",
-        "grunt-contrib-watch": "latest",
-        "grunt-contrib-jade": "latest"
+        "grunt" : "*",
+        "grunt-contrib-sass" : "*",
+        "grunt-contrib-jshint": "*",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-watch": "*",
+        "grunt-contrib-jade": "*"
     }
 }

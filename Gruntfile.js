@@ -70,17 +70,20 @@ module.exports = function (grunt) {
     },
 
     watch: {
+      options: {
+        livereload: true,
+      },
       javascript: {
-        files: 'javascripts/*/**.js',
+        files: 'src/javascripts/*/**.js',
         tasks: ['jshint', 'uglify']
       },
       sass: {
-        files: 'sass/*/**.scss',
-        tasks: 'sass'
+        files: 'src/sass/*/**.scss',
+        tasks: ['sass']
       },
       jade:{
         files: 'src/views/*/**.jade',
-        tasks: 'jade'
+        tasks: ['jade']
       }
     }
 
@@ -92,7 +95,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-jade');
 
-  grunt.registerTask('watcher', ['sass', 'jshint', 'uglify', 'jade', 'watch']);
-
-  grunt.registerTask('default', ['watcher']);
+  grunt.registerTask('default', ['sass', 'jshint', 'uglify', 'jade']);
 };
