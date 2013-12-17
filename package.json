@@ -1,19 +1,24 @@
 {
-    "name": "ui-widget-factory",
-    "description": "UI Widget Factory, to build, responsive, customized widgets.",
-    "version": "1.0.0",
-    "private": true,
-    "homepage" : "http://www.abhinavs.com",
-    "author" : {
-        "name" : "Abhinav Sharma",
-        "email" : "as.abhinav@gmail.com"
-    },
-    "dependencies": {
-        "grunt" : "*",
-        "grunt-contrib-sass" : "*",
-        "grunt-contrib-jshint": "*",
-        "grunt-contrib-uglify": "*",
-        "grunt-contrib-watch": "*",
-        "grunt-contrib-jade": "*"
-    }
+  "name": "ui-widget-factory",
+  "description": "UI Widget Factory, to build, responsive, customized widgets.",
+  "version": "1.0.0",
+  "private": true,
+  "homepage" : "http://www.abhinavs.com",
+  "author" : {
+    "name" : "Abhinav Sharma",
+    "email" : "as.abhinav@gmail.com"
+  },
+  "dependencies": {
+    "express": "3.4.7",
+    "jade": "*",
+    "grunt" : "*",
+    "grunt-contrib-sass" : "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-jade": "*"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
 }
