@@ -65,10 +65,6 @@ module.exports = function (grunt) {
       sass: {
         files: 'src/sass/**.scss',
         tasks: ['sass']
-      // },
-      // jade:{
-      //   files: 'src/views/*/**.jade',
-      //   tasks: ['jade']
       }
     }
 
@@ -78,7 +74,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-sass');
-  // grunt.loadNpmTasks('grunt-contrib-jade');
 
   grunt.registerTask('default', ['sass', 'jshint', 'uglify']);
 
