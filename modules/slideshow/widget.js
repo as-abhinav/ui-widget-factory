@@ -1,0 +1,1 @@
+// This is file which contains self executing slideshow js
