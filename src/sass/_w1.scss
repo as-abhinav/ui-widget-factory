@@ -1,0 +1,52 @@
+#widget-container{
+	width:800px;
+	margin:0 auto;
+
+}
+
+.blue {
+      background-color: #1570a6 !important;
+}
+
+.green {
+      background-color: #7fba00 !important;
+}
+
+.orange {
+      background-color: #ff8c00 !important;
+}
+
+.purple {
+      background-color: #833885 !important;
+}
+
+.grey {
+      background-color: #454545 !important;
+}
+
+
+.roundabout-holder {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      height: 20em;
+      width: 20em;
+}
+
+.roundabout-moveable-item {
+      color:white;
+      height: 20em;
+      width: 38em;
+      cursor: pointer;
+      background-color: #ccc;
+      //border: 1px solid #999;
+}
+
+.roundabout-in-focus {
+      cursor: auto;
+}
+
+.title-header p {
+      font-size: 3em;
+      background-color:lightgray;
+}

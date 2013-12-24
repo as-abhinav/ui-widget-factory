@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     // See: http://www.jshint.com/docs/
     jshint: {
       all: {
-        src: 'src/javascripts/**.js',
+        src: 'modules/slideshow/**.js',
         options: {
           bitwise: true,
           camelcase: true,
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
     uglify: {
       all: {
         files: {
-          'public/javascripts/app.js': 'src/javascripts/**.js'
+          'public/javascripts/app.js': 'modules/slideshow/**.js'
         }
       }
     },
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
       },
       all: {
         files: [ {
-          cwd: "src/sass",
+          cwd: "modules/slideshow",
           src: "*.scss",
           dest: "public/stylesheets",
           expand: true,
@@ -59,11 +59,11 @@ module.exports = function (grunt) {
         livereload: true,
       },
       javascript: {
-        files: 'src/javascripts/**.js',
-        tasks: ['jshint', 'uglify']
+        files: 'modules/slideshow/**/*.js',
+        tasks: ['uglify']
       },
       sass: {
-        files: 'src/sass/**.scss',
+        files: 'modules/slideshow/**/*.scss',
         tasks: ['sass']
       }
     }
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-sass');
 
-  grunt.registerTask('default', ['sass', 'jshint', 'uglify']);
+  grunt.registerTask('default', ['sass', 'uglify']);
 
-  grunt.registerTask('watcher', ['sass', 'jshint', 'uglify', 'watch']);
+  grunt.registerTask('watcher', ['sass', 'uglify', 'watch']);
 };
