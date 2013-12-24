@@ -28,21 +28,13 @@ $(document).ready(function(){
 
   manageControls(currentPosition);
 
-  $('#slidesContainer').bind('hover', function(event) {
-    /* Act on the event */
-   
-  });
+  
 
-  function autoPlay(){
+  function autoPlayInterval(){
       
-
-
       currentPosition = ($('#rightControl').css('display')=='block') ? currentPosition+1 : currentPosition-1;
-      
-      
-      console.log(currentPosition);
 
-       manageControls(currentPosition);
+      manageControls(currentPosition);
      
       $('#slideInner').animate({
         'marginLeft' : slideWidth*(-currentPosition)
@@ -54,8 +46,11 @@ $(document).ready(function(){
       };
   }
   
-  console.log(numberOfSlides);
-  setInterval(function(){autoPlay();},3000);
+  function autoplay(timeInterval){
+    setInterval(function(){autoPlayInterval();},timeInterval);
+  }
+  
+
 
   $('.control').bind('click', function(){
     // Determine new position
@@ -83,6 +78,16 @@ $(document).ready(function(){
       $('#rightControl').show() }
     } 
 
- 
+  $('#slideshow').bind('mouseover', function(event) {
+    /* Act on the event */
+    $('#rightControl,#leftControl').css('visibility', 'visible');
+   
+  });
+  $('#slideshow').bind('mouseout', function(event) {
+    /* Act on the event */
+    $('#rightControl,#leftControl').css('visibility', 'hidden');
+   
+  });
+
 
 });

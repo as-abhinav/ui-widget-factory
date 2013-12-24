@@ -3,6 +3,7 @@ ul , li {
   margin: 0;
 }
 
+
 #slideshow {
   margin:0 auto;
   width:640px;
@@ -40,11 +41,13 @@ ul , li {
   top:0;
   left:0;
   background-color:red;
+  visibility: hidden;
 }
 #rightControl {
   top:0;
   right:0;
   background-color:red;
+  visibility: hidden;
 }
 
 
