@@ -45,14 +45,15 @@ $(document).ready(function() {
        
         
 
-    /*    if(this.config.autoplay.enable){
-          console.log(this.config.autoplay);
+      if(this.config.autoplay.enable){
+        this.autoPlayStart();
+      }
 
-          this.myfunc = setInterval(function(){slideshow.autoPlaySlideShow();},this.config.autoplay.timeinterval );
+    },
 
-
-        }*/
-
+    autoPlayStart :function(){
+      
+        this.myfunc = setInterval(function(){slideshow.autoPlaySlideShow();},this.config.autoplay.timeinterval );
     },
 
     autoPlaySlideShow : function(){
@@ -66,17 +67,21 @@ $(document).ready(function() {
       });
 
       if (slideshow.currentPosition == this.numOfSlides - 1) {
-        console.log('last slide');
+        
         slideshow.currentPosition = 1;
       };
 
     },
+    autoPlayStop : function(){
+      
+      clearInterval(this.myfunc);
+    },
 
     moveSlides:function(){
 
-     /* if(slideshow.config.autoplay.enable){
-        clearInterval(slideshow.myfunc);
-      }*/
+      if(slideshow.config.autoplay.enable){
+        slideshow.autoPlayStop();
+      }
       
       slideshow.currentPosition = ($(this).attr('id')=='rightControl') ? slideshow.currentPosition+1 : slideshow.currentPosition-1;
   
@@ -86,6 +91,9 @@ $(document).ready(function() {
             'marginLeft' : slideshow.config.width*(-slideshow.currentPosition)
         });
 
+        if(slideshow.config.autoplay.enable){
+          slideshow.autoPlayStart();
+        }
 
     },
 
@@ -106,7 +114,11 @@ $(document).ready(function() {
 
   slideshow.init({
     height:100,
-    width:640
+    width:640,
+    autoplay:{
+      enable:true,
+      timeinterval:3000
+    }
 
   });
 
