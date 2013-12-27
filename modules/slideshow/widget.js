@@ -2,8 +2,6 @@ $(document).ready(function() {
 
   var slideshow = {
 
-  
-
     currentPosition : 0,
 
     myfunc:{},
@@ -38,13 +36,19 @@ $(document).ready(function() {
       $('#slides-container,#slideInner,#slideInner ul').css('overflow', 'hidden');
 
       $('#slideInner').prepend('<span class="control" id="leftControl" >Move left</span>');
-        $('#slideInner').append('<span class="control" id="rightControl" >Move right</span>');
-        $('.control').on('click', this.moveSlides);
-        
-        this.manageControls(this.currentPosition);
-       
-        
+      $('#slideInner').append('<span class="control" id="rightControl" >Move right</span>');
+      $('.control').on('click', this.moveSlides);
 
+      $('#slideshow').on('mouseover', function() {
+          $('#rightControl,#leftControl').css('visibility', 'visible');
+      });
+
+      $('#slideshow').on('mouseout', function() {
+          $('#rightControl,#leftControl').css('visibility', 'hidden');
+      });
+        
+      this.manageControls(this.currentPosition);
+       
       if(this.config.autoplay.enable){
         this.autoPlayStart();
       }
