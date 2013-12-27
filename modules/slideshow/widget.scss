@@ -60,26 +60,37 @@ table {
 
 .control {
   display:block;
-  width:39px;
-  //height:263px;
+  width:50px;
+  height:60px;
   //text-indent:-10000px;
   position:absolute;
   cursor: pointer;
   z-index: 10000;
+  background-color:#bcbcbc;
+  border-radius: 3px;
 }
 #leftControl {
-  top:0;
-  left:0;
-  background-color:red;
+  
+  position:absolute;
+  top:20px;
+  left:5px;
   visibility: hidden;
+  background-image: url('../images/leftaerrow.png');
+  background-position:center; 
+  background-repeat:no-repeat;
 }
 #rightControl {
-  top:0;
-  right:0;
-  background-color:red;
+  
+  position: absolute;
+  top:20px;
+  right:5px;
   visibility: hidden;
+  background-image: url('../images/rightaerrow.png');
+  background-position:center; 
+  background-repeat:no-repeat;
+   
 }
 li{
-  background-color: #bcbcbc;
+  background-color: #3c3c3c;
   
 }

@@ -22,36 +22,39 @@ $(document).ready(function() {
 
     init : function(config){
 
-      $.extend( this.config, config);
-      
-      $('#slideshow').css({'width' : this.config.width});
+            $.extend( this.config, config);
+            
+            $('#slideshow').css({'width' : this.config.width});
 
-      $('#slideshow ul').wrap('<div id="slideInner"></div>').children('li').css({
-        'float': 'left',
-        'width': this.config.width ,
-        'height': this.config.height 
-      });
+            $('#slideshow ul').wrap('<div id="slideInner"></div>').children('li').css({
+              'float': 'left',
+              'width': this.config.width ,
+              'height': this.config.height 
+            });
 
-      $('#slideInner').css('width', this.config.width * this.numOfSlides);
-      $('#slides-container,#slideInner,#slideInner ul').css('overflow', 'hidden');
+            $('#slideInner').css('width', this.config.width * this.numOfSlides);
+            $('#slides-container,#slideInner,#slideInner ul').css('overflow', 'hidden');
 
-      $('#slideInner').prepend('<span class="control" id="leftControl" >Move left</span>');
-      $('#slideInner').append('<span class="control" id="rightControl" >Move right</span>');
-      $('.control').on('click', this.moveSlides);
+            $('#slideInner').prepend('<span class="control" id="leftControl" ></span>');
+            $('#slideInner').append('<span class="control" id="rightControl" ></span>');
 
-      $('#slideshow').on('mouseover', function() {
-          $('#rightControl,#leftControl').css('visibility', 'visible');
-      });
+            $('.control').css('top',((this.config.height - 60)/2));
 
-      $('#slideshow').on('mouseout', function() {
-          $('#rightControl,#leftControl').css('visibility', 'hidden');
-      });
-        
-      this.manageControls(this.currentPosition);
-       
-      if(this.config.autoplay.enable){
-        this.autoPlayStart();
-      }
+            $('.control').on('click', this.moveSlides);
+
+            $('#slideshow').on('mouseover', function() {
+                $('#rightControl,#leftControl').css('visibility', 'visible');
+            });
+
+            $('#slideshow').on('mouseout', function() {
+                $('#rightControl,#leftControl').css('visibility', 'hidden');
+            });
+              
+            this.manageControls(this.currentPosition);
+             
+            if(this.config.autoplay.enable){
+              this.autoPlayStart();
+            }
 
     },
 
@@ -120,7 +123,7 @@ $(document).ready(function() {
     height:100,
     width:640,
     autoplay:{
-      enable:true,
+      enable:false,
       timeinterval:3000
     }
 
