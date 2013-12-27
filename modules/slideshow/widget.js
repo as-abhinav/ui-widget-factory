@@ -1,92 +1,113 @@
-// This is file which contains self executing slideshow js
-$(document).ready(function(){
-  
+$(document).ready(function() {
 
-  var currentPosition = 0;
-  var slides = $(".slide");
-
-  var slideHeight = $(".slide").height();
-  console.log(slideHeight);
-
-
-  var slideWidth = 560;
-  var numberOfSlides = slides.length;
-  
-  $('#slidesContainer').css('overflow', 'hidden');
- 
-  slides.wrapAll('<div id="slideInner"></div>').css({
-    'float' : 'left',
-    'width' : slideWidth
-  });
-  
-
-  $('#slideInner').css('width', slideWidth * numberOfSlides);
-
-  $('#slideshow').prepend('<span class="control" id="leftControl" >Move left</span>');
-  $('#slideshow').append('<span class="control" id="rightControl" >Move right</span>');
-  $('#leftControl,#rightControl').height(slideHeight);
-
-  manageControls(currentPosition);
+  var slideshow = {
 
   
 
-  function autoPlayInterval(){
+    currentPosition : 0,
+
+    myfunc:{},
+
+    slides : $('.slides'),
+
+    numOfSlides : $('.slides').length,
+
+    config : {
+      height: 100,
+      width: 640,
+      autoplay : {
+
+        enable : false,
+        timeinterval: 4000
+      }
+    },
+
+    init : function(config){
+
+      $.extend( this.config, config);
       
-      currentPosition = ($('#rightControl').css('display')=='block') ? currentPosition+1 : currentPosition-1;
+      $('#slideshow').css({'width' : this.config.width});
 
-      manageControls(currentPosition);
-     
-      $('#slideInner').animate({
-        'marginLeft' : slideWidth*(-currentPosition)
+      $('#slideshow ul').wrap('<div id="slideInner"></div>').children('li').css({
+        'float': 'left',
+        'width': this.config.width ,
+        'height': this.config.height 
       });
 
-      if (currentPosition == numberOfSlides - 1) {
+      $('#slideInner').css('width', this.config.width * this.numOfSlides);
+      $('#slides-container,#slideInner,#slideInner ul').css('overflow', 'hidden');
+
+      $('#slideInner').prepend('<span class="control" id="leftControl" >Move left</span>');
+        $('#slideInner').append('<span class="control" id="rightControl" >Move right</span>');
+        $('.control').on('click', this.moveSlides);
+        
+        this.manageControls(this.currentPosition);
+       
+        
+
+    /*    if(this.config.autoplay.enable){
+          console.log(this.config.autoplay);
+
+          this.myfunc = setInterval(function(){slideshow.autoPlaySlideShow();},this.config.autoplay.timeinterval );
+
+
+        }*/
+
+    },
+
+    autoPlaySlideShow : function(){
+
+      slideshow.currentPosition = ($('#rightControl').css('display')=='block') ? slideshow.currentPosition+1 : slideshow.currentPosition-1;
+
+      slideshow.manageControls(slideshow.currentPosition);
+     
+      $('#slideInner').animate({
+        'marginLeft' : slideshow.config.width*(-slideshow.currentPosition)
+      });
+
+      if (slideshow.currentPosition == this.numOfSlides - 1) {
         console.log('last slide');
-        currentPosition = 1;
+        slideshow.currentPosition = 1;
       };
-  }
+
+    },
+
+    moveSlides:function(){
+
+     /* if(slideshow.config.autoplay.enable){
+        clearInterval(slideshow.myfunc);
+      }*/
+      
+      slideshow.currentPosition = ($(this).attr('id')=='rightControl') ? slideshow.currentPosition+1 : slideshow.currentPosition-1;
   
-  function autoplay(timeInterval){
-    setInterval(function(){autoPlayInterval();},timeInterval);
-  }
-  
+        slideshow.manageControls(slideshow.currentPosition);
+         
+        $('#slideInner').animate({
+            'marginLeft' : slideshow.config.width*(-slideshow.currentPosition)
+        });
 
 
-  $('.control').bind('click', function(){
-    // Determine new position
-    currentPosition = ($(this).attr('id')=='rightControl') ? currentPosition+1 : currentPosition-1;
-  
-     
-      manageControls(currentPosition);
-     
-      $('#slideInner').animate({
-        'marginLeft' : slideWidth*(-currentPosition)
-      });
-    });
+    },
 
-  function manageControls(position){
-    // Hide left arrow if position is first slide
-    if(position==0){ 
-      $('#leftControl').hide() 
-    }else{ 
-      $('#leftControl').show() 
-    }
+    manageControls : function(position){
+      
+      if(position==0){ 
+          $('#leftControl').hide() 
+        }else{ 
+          $('#leftControl').show() 
+        }
     
-    if(position==numberOfSlides-1){ 
-      $('#rightControl').hide() 
-    }else{ 
-      $('#rightControl').show() }
-    } 
+        if(position==this.numOfSlides-1){ 
+          $('#rightControl').hide() 
+        }else{ 
+          $('#rightControl').show() }
+    }
+  };
 
-  $('#slideshow').bind('mouseover', function(event) {
-    /* Act on the event */
-    $('#rightControl,#leftControl').css('visibility', 'visible');
-   
-  });
-  $('#slideshow').bind('mouseout', function(event) {
-    /* Act on the event */
-    $('#rightControl,#leftControl').css('visibility', 'hidden');
-   
+  slideshow.init({
+    height:100,
+    width:640
+
   });
 
 

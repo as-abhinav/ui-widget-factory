@@ -1,58 +1,85 @@
-ul , li {
-  padding: 0;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
-
-#slideshow {
-  margin:0 auto;
-  width:640px;
-  //height:263px;
-  //background:transparent url(../images/bg_slideshow.jpg) no-repeat 0 0;
-  position:relative;
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
 }
-
-#slideshow #slidesContainer {
-  margin:0 auto;
-  width:560px;
-  //height:150px;
-  overflow:auto; /* allow scrollbar */
-  position:relative;
+body {
+  line-height: 1;
 }
-
-#slideshow #slidesContainer ul{
-  heigth:100px;
-}
-
-#slideshow #slidesContainer ul li{
-
+ol, ul {
   list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+
+#slideshow{
+  position: relative;
+  margin:0 auto;
+  //width:540px;
+  
+}
+
+#slideshow #slides-container{
+  position: relative;
+  //height: 300px;
+  overflow: auto;
+  
 }
 
 .control {
   display:block;
   width:39px;
   //height:263px;
-  text-indent:-10000px;
+  //text-indent:-10000px;
   position:absolute;
   cursor: pointer;
+  z-index: 10000;
 }
 #leftControl {
   top:0;
   left:0;
   background-color:red;
-  visibility: hidden;
+  //visibility: hidden;
 }
 #rightControl {
   top:0;
   right:0;
   background-color:red;
-  visibility: hidden;
+  //visibility: hidden;
 }
-
-
-
-.slide{
-  background-color: gray;
-  height:100px;
+li{
+  background-color: #bcbcbc;
+  
 }
