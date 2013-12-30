@@ -53,12 +53,17 @@ $(document).ready(function() {
 
             if(this.config.dots){
               this.addDots();
+              $('li#circle').first().addClass('activeCircle');
             }      
 
+            //Dots click Handler
             $('li#circle').on('click', function(){
-             
-             slideshow.currentPosition = parseInt($(this).attr('class'));
-            console.log(parseInt($(this).attr('class')));
+
+              $('li#circle').removeClass('activeCircle');
+              $(this).addClass('activeCircle');
+
+              slideshow.currentPosition = parseInt($(this).attr('class'));
+            
               slideshow.manageControls(slideshow.currentPosition);
 
               $('#slideInner').animate({
@@ -84,6 +89,12 @@ $(document).ready(function() {
                 id:'circle',
                 class:i}).appendTo('#dots');
             }
+          
+          var widthOfDots = (($('li#circle').width() + 10) * this.numOfSlides);
+          console.log(widthOfDots);
+          $('ul#dots').width(widthOfDots).css('margin', '10px auto');
+
+
     },
 
 
@@ -101,6 +112,9 @@ $(document).ready(function() {
       $('#slideInner').animate({
         'marginLeft' : slideshow.config.width*(-slideshow.currentPosition)
       });
+
+      $('li#circle').removeClass('activeCircle');
+        $('li.'+slideshow.currentPosition).addClass('activeCircle');
 
       if (slideshow.currentPosition == this.numOfSlides - 1) {
         
@@ -121,6 +135,9 @@ $(document).ready(function() {
       
       slideshow.currentPosition = ($(this).attr('id')=='rightControl') ? slideshow.currentPosition+1 : slideshow.currentPosition-1;
   
+        $('li#circle').removeClass('activeCircle');
+        $('li.'+slideshow.currentPosition).addClass('activeCircle');
+
         slideshow.manageControls(slideshow.currentPosition);
          
         $('#slideInner').animate({
@@ -152,7 +169,7 @@ $(document).ready(function() {
     height:400,
     width:640,
     autoplay:{
-      enable:false,
+      enable:true,
       timeinterval:3000
     }
 

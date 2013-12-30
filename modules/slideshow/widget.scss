@@ -93,7 +93,9 @@ table {
 
  #dots{
   overflow: auto;
+  
  }
+
 #circle {
     float:left;
     width: 15px;
@@ -102,9 +104,14 @@ table {
     -moz-border-radius: 50%; 
     -webkit-border-radius: 50%; 
     border-radius: 50%;
-    border:solid 2px orange;
-    background: #4679BD; 
+    border:solid 2px gray;
+    background-color: #dcdcdc; 
     list-style:none;margin-left:5px;
+}
+
+.activeCircle{
+  background-color: red !important;
+
 }
 
 li{
