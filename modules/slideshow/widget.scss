@@ -66,16 +66,16 @@ table {
   position:absolute;
   cursor: pointer;
   z-index: 10000;
-  background-color:#bcbcbc;
+  background-color:#555555;
   border-radius: 3px;
 }
 #leftControl {
   
   position:absolute;
   top:20px;
-  left:5px;
+  left:10px;
   visibility: hidden;
-  background-image: url('../images/leftaerrow.png');
+  background-image: url('../images/orangeleft.png');
   background-position:center; 
   background-repeat:no-repeat;
 }
@@ -83,14 +83,31 @@ table {
   
   position: absolute;
   top:20px;
-  right:5px;
+  right:10px;
   visibility: hidden;
-  background-image: url('../images/rightaerrow.png');
+  background-image: url('../images/orangeright.png');
   background-position:center; 
   background-repeat:no-repeat;
    
 }
+
+ #dots{
+  overflow: auto;
+ }
+#circle {
+    float:left;
+    width: 15px;
+    height:15px;
+   // padding-bottom: 50%;
+    -moz-border-radius: 50%; 
+    -webkit-border-radius: 50%; 
+    border-radius: 50%;
+    border:solid 2px orange;
+    background: #4679BD; 
+    list-style:none;margin-left:5px;
+}
+
 li{
-  background-color: #3c3c3c;
+  background-color: #bcbcbc;
   
 }

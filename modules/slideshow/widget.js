@@ -13,6 +13,7 @@ $(document).ready(function() {
     config : {
       height: 100,
       width: 640,
+      dots:true,
       autoplay : {
 
         enable : false,
@@ -26,7 +27,7 @@ $(document).ready(function() {
             
             $('#slideshow').css({'width' : this.config.width});
 
-            $('#slideshow ul').wrap('<div id="slideInner"></div>').children('li').css({
+            $('#slides-container ul').wrap('<div id="slideInner"></div>').children('li').css({
               'float': 'left',
               'width': this.config.width ,
               'height': this.config.height 
@@ -49,7 +50,23 @@ $(document).ready(function() {
             $('#slideshow').on('mouseout', function() {
                 $('#rightControl,#leftControl').css('visibility', 'hidden');
             });
+
+            if(this.config.dots){
+              this.addDots();
+            }      
+
+            $('li#circle').on('click', function(){
+             
+             slideshow.currentPosition = parseInt($(this).attr('class'));
+            console.log(parseInt($(this).attr('class')));
+              slideshow.manageControls(slideshow.currentPosition);
+
+              $('#slideInner').animate({
+                  'marginLeft' : slideshow.config.width*(-slideshow.currentPosition)
+              });
               
+            });
+
             this.manageControls(this.currentPosition);
              
             if(this.config.autoplay.enable){
@@ -57,6 +74,18 @@ $(document).ready(function() {
             }
 
     },
+
+    addDots:function(){
+        
+          $('<div>',{id:'dots-container'}).appendTo('#slides-container').append('<ul id="dots"></ul>');
+
+            for(var i=0 ; i<this.numOfSlides ; i++){
+              $('<li>',{
+                id:'circle',
+                class:i}).appendTo('#dots');
+            }
+    },
+
 
     autoPlayStart :function(){
       
@@ -120,7 +149,7 @@ $(document).ready(function() {
   };
 
   slideshow.init({
-    height:100,
+    height:400,
     width:640,
     autoplay:{
       enable:false,
